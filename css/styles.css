@@ -1,0 +1,360 @@
+/*
+ *---------------------------------------------------------------------------
+ * A doption de la philosophie mobile-first
+ *
+ * On commence par designer notre site pour l'affichage des téléphones mobiles
+ * Puis on addapte cet affichage en fonction des différentes tailles d'écran
+ *----------------------------------------------------------------------------
+ */
+
+ /* Définition des couleurs sous forme de variables */
+ :root {
+    --primary : rgba(10, 105, 34);
+    --primary-opacity-90 : rgba(10, 105, 34, 0.090);
+
+ 
+    --secondary : rgba(51, 6, 155);
+    --secondary-opacity-40 : rgba(51, 6, 155, 0.6);
+
+    --white : rgb(255, 255, 255);
+
+    
+ }
+
+ /* mise en place du mini-reset  */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Kalam', cursive;
+}
+
+/*----------------------------------------------------- Global code --------------------------------------------*/
+ul {
+    list-style-type: none; /*Retire le style de base de tous les éléments de type liste  */
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.img-fluid {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+p {
+    font-size: 1.2rem; /* 1rem c'est la taille de base*/
+}
+
+/* ---------------------------------------------Mobile----------------------------------------- */
+
+
+nav {
+    /* position: absolute; */
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    transition: 1s;
+    /* background-color: var(--primary); */
+}
+
+.nav-scrolling {
+    background-color: var(--primary);
+    transition: 1s;
+}
+
+nav #hamburger-menu-input, .nav-list {
+    display: none; /*faire dispraître les éléments*/
+
+}
+
+nav #hamburger-menu-input:checked + .nav-list {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    top: 50px;
+    left: 0;
+    padding-left: 20px;
+    background-color: var(--primary);
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav * {
+    color: white;
+}
+
+nav .nav-list li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 1.6rem;
+}
+/* --------------Welcome section --------------- */
+
+#welcome-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../images/welcome.jpg");
+    /* background-size: contain;
+    background-size: top; */
+    background-position: center;
+     background-size: cover;         /*background size et background repeat doivent être utilisés en même temps et ça permet à l'image de s'adapter à sa box */
+    background-repeat: no-repeat;
+    
+}
+
+#welcome-section .text-box {
+    color: white;
+    background-color: var(--secondary-opacity-40);
+    padding: 10px; 
+    border-radius: 10px; /*pour arrondir les bords du box */
+    margin-top: 150px;
+}
+
+/* --------------Services section --------------- */
+
+#services-section .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 30px; /* les éléments enfants direct du contenaire auront un espace "une gouttiere"*/
+}
+
+#services-section .container .card {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+#services-section .container .img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    min-width: 50px;
+    
+}
+
+/* --------------About me section --------------- */
+
+
+#about-me-section {
+    /* background-color: rgba(10, 105, 34, 0.090); */
+    background-color: var(--primary-opacity-90);
+}
+
+#about-me-section .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+#about-me-section .container .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px;
+    border: .5px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, .5);
+    background-color: var(--white);
+}
+
+#about-me-section .card .text-box {
+    padding: 20px;
+} 
+
+#about-me-section .card img {
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#gallery-section .container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+/* --------------Avis section 
+
+#avis .avis-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+
+#avis .avis-container .avis {
+    margin-top: 30px;
+    background-color: var(--secondary-opacity-40);
+    height: 10em;
+}
+
+/* --------------contact section 
+
+#contact .mes-coordonees {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+#contact .reseaux-sociaux {
+    display: flex;
+    justify-content: space-between;
+}
+
+#contact .formulaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+---------*/
+
+
+
+/* -------------------------------------------------Tablette------------------------------------------------- */
+
+@media screen and (min-width: 768px) { /* media >=768px */
+    h2 {
+        font-size: 4rem;
+    }
+
+    #about-me-section .container .card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #about-me-section .card .text-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
+
+/* -------------------------------------------------Laptop------------------------------------------ */
+
+@media screen and (min-width: 1024px) { /* media >=1024px */
+    
+   
+    nav .hamburger-menu-label {
+        display: none;
+    }
+    
+    nav .nav-list {
+        display: flex;
+        width: 50%;
+        justify-content: space-around;
+
+    }
+
+    nav .nav-list a:hover {
+        border: none;
+        border-bottom: 3px solid var(--secondary);
+    }
+
+    #welcome-section {
+        background-position: top;
+    }
+
+    /* #services-section .container {
+        width: 60%;
+    }  c'est la deuxième ligne juste en bas */
+
+    #services-section .container .card {
+        width: 60%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #services-section .container .card-2 {
+        grid-template-areas: "gauche droite";  /* le rôle de grid template areas est de définir l'ordre d'affichage des éléments*/
+    }
+
+    #services-section .card-2 .text-box {
+        grid-area: gauche; /* sert à définir quel élément correspond à celui qui est à droite et à gauche*/
+    }
+
+    #services-section .card-2 .img-box {
+        grid-area: droite; 
+    }
+
+
+    #about-me-section .container .card {
+        width: 80%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    #gallery-section .container {
+        display: grid;
+        grid-template: "1fr 1fr 1fr 1fr" 33.33vh
+                       "1fr 1fr 1fr 1fr" 33.33vh
+                       "1fr 1fr 1fr 1fr" 33.33vh;
+        gap: 5px;
+
+    }
+
+    #gallery-section .box-a, .box-g {
+        grid-row: span 2;
+    }
+
+    #gallery-section .box-e, .box-h, .box-k {
+        grid-column: span 2;
+    }
+
+    #gallery-section .container img {
+        object-fit: cover;
+    }
+
+    /* .container .card-1 .img-box {
+            order: 2;
+    }
+
+    .container .card-3 .img-box {
+        order: 2;
+    }                              on peut aussi utiliser la pethode order pour définir l'odre des éléments au lieu d'utiliser grid template areas*/
+/* 
+   
+    
+
+    
+
+    /* h2 {
+        font-size: 10rem;
+    } */
+
+}
+
+
+
+
